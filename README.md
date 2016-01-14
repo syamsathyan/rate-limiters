@@ -8,7 +8,7 @@ Rate-Limiter Experiments
 
 Tests
 =====
-MultibandwidthBlocking
+Multibandwidth - Blocking
 ------------
 >60, TimeUnit.MINUTES, 1 : 1, TimeUnit.SECONDS, 1  
 >multiBandwidthBucket = Buckets.withNanoTimePrecision()
@@ -180,7 +180,7 @@ Executed @ 13:23:14:564, Thread name : pool-1-thread-160
 Executed @ 13:23:15:568, Thread name : pool-1-thread-161
 
 
-SinglebandwidthNonBlocking (Rejecting)
+Singlebandwidth - NonBlocking (Rejecting)
 ------------
 >10, TimeUnit.SECONDS, 1  
 >singleBandwidthBucket = Buckets.withNanoTimePrecision()
