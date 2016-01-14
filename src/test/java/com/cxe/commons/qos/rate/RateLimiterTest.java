@@ -18,9 +18,11 @@ package com.cxe.commons.qos.rate;
 import com.github.bucket4j.Bucket;
 import com.github.bucket4j.Buckets;
 import org.junit.*;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertTrue;
 
 /**
