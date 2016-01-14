@@ -12,8 +12,8 @@ Multibandwidth - Blocking
 ------------
 >60, TimeUnit.MINUTES, 1 : 1, TimeUnit.SECONDS, 1  
 
-```
-#!java
+```java
+
 multiBandwidthBucket = Buckets.withNanoTimePrecision()
 .withLimitedBandwidth(60, TimeUnit.MINUTES, 1)
 .withLimitedBandwidth(1, TimeUnit.SECONDS, 1)
@@ -188,8 +188,8 @@ Singlebandwidth - NonBlocking (Rejecting)
 ------------
 >10, TimeUnit.SECONDS, 1  
 
-```
-#!java
+```java
+
 singleBandwidthBucket = Buckets.withNanoTimePrecision()
 .withLimitedBandwidth(10, TimeUnit.SECONDS, 1)
 .build();  
