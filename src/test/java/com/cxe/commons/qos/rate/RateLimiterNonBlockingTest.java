@@ -19,6 +19,7 @@ import com.github.bucket4j.Bucket;
 import com.github.bucket4j.Buckets;
 import org.junit.*;
 
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -28,18 +29,16 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author sathyasy
  */
-public class RateLimiterTest {
-    Bucket multiBandwidthBucket;
+public class RateLimiterNonBlockingTest {
 
-    public RateLimiterTest() {
-        multiBandwidthBucket = Buckets.withNanoTimePrecision()
-                // allows 1000 tokens per 1 minute
-                .withLimitedBandwidth(60, TimeUnit.MINUTES, 1)
-                        // but not often then 50 tokens per 1 second
-                .withLimitedBandwidth(1, TimeUnit.SECONDS, 1)
+    Bucket singleBandwidthBucket;
+
+    public RateLimiterNonBlockingTest() {
+        //single bandwidth
+        // build bucket with required capacity and associate it with particular user
+        singleBandwidthBucket = Buckets.withNanoTimePrecision()
+                .withLimitedBandwidth(10, TimeUnit.SECONDS, 1)
                 .build();
-
-
     }
 
     @BeforeClass
@@ -60,21 +59,23 @@ public class RateLimiterTest {
     }
 
     /**
-     * Test of multipleBandwidth method, for RateLimiter
+     * Test of singleBandwidthNonBlocking method, for RateLimiter
      */
     @Test
-    public void multipleBandwidth() throws InterruptedException {
+    public void singleBandwidthNonBlocking() throws InterruptedException {
 
         int concurrency = 1000;
         ExecutorService ex = Executors.newFixedThreadPool(concurrency);
         for (int i = 0; i < concurrency; i++) {
             // Consume a token from the token bucket.  If a token is not available this method will block until
             // the refill adds one to the bucket.
-            multiBandwidthBucket.consume(1);
-            ex.submit(new HsdActivateMockRunner());// exec thread when it chooses
+            if (singleBandwidthBucket.tryConsumeSingleToken()) {
+                ex.submit(new HsdActivateMockRunner());// exec thread when it chooses
+            } else {
+                System.out.println("Rejected @ " + HsdActivateMockRunner.formatter.format(new Date(System.currentTimeMillis())) + ", Thread name : " + Thread.currentThread().getName());
+            }
         }
         assertTrue(true);
     }
-
 
 }

@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class HsdActivateMockRunner implements Runnable{
 
-    DateFormat formatter = new SimpleDateFormat("HH:mm:ss:SSS");
+    public static DateFormat formatter = new SimpleDateFormat("HH:mm:ss:SSS");
 
     @Override
     public void run() {

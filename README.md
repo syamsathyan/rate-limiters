@@ -8,9 +8,13 @@ Rate-Limiter Experiments
 
 Tests
 =====
-Multibandwidth
+MultibandwidthBlocking
 ------------
 >60, TimeUnit.MINUTES, 1 : 1, TimeUnit.SECONDS, 1
+>multiBandwidthBucket = Buckets.withNanoTimePrecision()
+>.withLimitedBandwidth(60, TimeUnit.MINUTES, 1)
+>.withLimitedBandwidth(1, TimeUnit.SECONDS, 1)
+>.build();
 
 Running com.cxe.commons.qos.rate.RateLimiterTest
 Executed @ 13:20:35:031, Thread name : pool-1-thread-1
@@ -174,3 +178,44 @@ Executed @ 13:23:12:558, Thread name : pool-1-thread-158
 Executed @ 13:23:13:559, Thread name : pool-1-thread-159
 Executed @ 13:23:14:564, Thread name : pool-1-thread-160
 Executed @ 13:23:15:568, Thread name : pool-1-thread-161
+
+
+SinglebandwidthNonBlocking (Rejecting)
+------------
+>10, TimeUnit.SECONDS, 1
+
+Executed @ 15:13:44:056, Thread name : pool-1-thread-1
+Executed @ 15:13:44:057, Thread name : pool-1-thread-9
+Executed @ 15:13:44:056, Thread name : pool-1-thread-3
+Executed @ 15:13:44:056, Thread name : pool-1-thread-2
+Executed @ 15:13:44:057, Thread name : pool-1-thread-8
+Executed @ 15:13:44:057, Thread name : pool-1-thread-5
+Executed @ 15:13:44:057, Thread name : pool-1-thread-7
+Executed @ 15:13:44:056, Thread name : pool-1-thread-4
+Executed @ 15:13:44:057, Thread name : pool-1-thread-6
+Executed @ 15:13:44:057, Thread name : pool-1-thread-10
+Rejected @ 15:13:44:057, Thread name : main
+Rejected @ 15:13:44:059, Thread name : main
+Rejected @ 15:13:44:059, Thread name : main
+Rejected @ 15:13:44:059, Thread name : main
+Rejected @ 15:13:44:059, Thread name : main
+Rejected @ 15:13:44:059, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:060, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
+Rejected @ 15:13:44:061, Thread name : main
