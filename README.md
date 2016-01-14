@@ -10,7 +10,7 @@ Tests
 =====
 MultibandwidthBlocking
 ------------
->60, TimeUnit.MINUTES, 1 : 1, TimeUnit.SECONDS, 1
+>60, TimeUnit.MINUTES, 1 : 1, TimeUnit.SECONDS, 1  
 >multiBandwidthBucket = Buckets.withNanoTimePrecision()
 >.withLimitedBandwidth(60, TimeUnit.MINUTES, 1)
 >.withLimitedBandwidth(1, TimeUnit.SECONDS, 1)
@@ -182,7 +182,10 @@ Executed @ 13:23:15:568, Thread name : pool-1-thread-161
 
 SinglebandwidthNonBlocking (Rejecting)
 ------------
->10, TimeUnit.SECONDS, 1
+>10, TimeUnit.SECONDS, 1  
+>singleBandwidthBucket = Buckets.withNanoTimePrecision()
+>.withLimitedBandwidth(10, TimeUnit.SECONDS, 1)
+>.build();
 
 Executed @ 15:13:44:056, Thread name : pool-1-thread-1
 Executed @ 15:13:44:057, Thread name : pool-1-thread-9
