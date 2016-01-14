@@ -11,10 +11,14 @@ Tests
 Multibandwidth - Blocking
 ------------
 >60, TimeUnit.MINUTES, 1 : 1, TimeUnit.SECONDS, 1  
->multiBandwidthBucket = Buckets.withNanoTimePrecision()
->.withLimitedBandwidth(60, TimeUnit.MINUTES, 1)
->.withLimitedBandwidth(1, TimeUnit.SECONDS, 1)
->.build();
+
+```
+#!java
+multiBandwidthBucket = Buckets.withNanoTimePrecision()
+.withLimitedBandwidth(60, TimeUnit.MINUTES, 1)
+.withLimitedBandwidth(1, TimeUnit.SECONDS, 1)
+.build();
+```
 
 Running com.cxe.commons.qos.rate.RateLimiterTest
 Executed @ 13:20:35:031, Thread name : pool-1-thread-1
@@ -183,9 +187,13 @@ Executed @ 13:23:15:568, Thread name : pool-1-thread-161
 Singlebandwidth - NonBlocking (Rejecting)
 ------------
 >10, TimeUnit.SECONDS, 1  
->singleBandwidthBucket = Buckets.withNanoTimePrecision()
->.withLimitedBandwidth(10, TimeUnit.SECONDS, 1)
->.build();  
+
+```
+#!java
+singleBandwidthBucket = Buckets.withNanoTimePrecision()
+.withLimitedBandwidth(10, TimeUnit.SECONDS, 1)
+.build();  
+```
 
 Executed @ 15:13:44:056, Thread name : pool-1-thread-1  
 Executed @ 15:13:44:057, Thread name : pool-1-thread-9  
