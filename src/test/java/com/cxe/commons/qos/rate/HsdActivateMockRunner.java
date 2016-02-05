@@ -14,6 +14,6 @@ public class HsdActivateMockRunner implements Runnable{
     @Override
     public void run() {
         Date date = new Date(System.currentTimeMillis());
-        System.out.println("Executed @ "+formatter.format(date)+", Thread name : " + Thread.currentThread().getName());
+        System.out.println("OK @ "+formatter.format(date)+", Thread name : " + Thread.currentThread().getName());
     }
 }
